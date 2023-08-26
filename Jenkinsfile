@@ -13,6 +13,7 @@ pipeline {
         PROD_API_ENDPOINT = ""
         PROD_APP_ENDPOINT = ""
         INTERNAL_PORT = "80"
+        EXTERNAL_PORT = "${PORT_EXPOSED}"
         CONTAINER_IMAGE = "${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
     }
     agent none
