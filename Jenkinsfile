@@ -26,7 +26,7 @@ pipeline {
               }
            }
        }
-       stage('Run container based on builded image') {https://github.com/kamatador9/static-website-example/tree/master
+       stage('Run container based on builded image') {
           agent any
           steps {
             script {
