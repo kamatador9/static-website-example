@@ -1,5 +1,5 @@
 FROM nginx
-LABEL maintainer="KAMSU KOM"
+LABEL maintainer="KAMSU KOM arthur"
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y curl && \
