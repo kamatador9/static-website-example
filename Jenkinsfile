@@ -8,8 +8,8 @@ pipeline {
         DOCKERHUB_ID = "kamatador"
         DOCKERHUB_PASSWORD = credentials('dockerhub_password')
         APP_NAME = "kamsu"
-        STG_API_ENDPOINT = "ip10-0-0-4-cjklsbh79sugqdpn17g0-1993.direct.docker.labs.eazytraining.fr"
-        STG_APP_ENDPOINT = "ip10-0-0-4-cjklsbh79sugqdpn17g0-80.direct.docker.labs.eazytraining.fr"
+        STG_API_ENDPOINT = "dev.q-bb.ca:1993"
+        STG_APP_ENDPOINT = "dev.q-bb.ca:80"
         PROD_API_ENDPOINT = ""
         PROD_APP_ENDPOINT = ""
         INTERNAL_PORT = "80"
@@ -89,12 +89,10 @@ pipeline {
      
      }
      stage('PROD - Deploy app') {
-       when {
-           expression { GIT_BRANCH == 'origin/main' }
-       }
+    
      agent any
 
-       steps {
+     steps {
           script {
             sh """
               echo  {\\"your_name\\":\\"${APP_NAME}\\",\\"container_image\\":\\"${CONTAINER_IMAGE}\\", \\"external_port\\":\\"${EXTERNAL_PORT}\\", \\"internal_port\\":\\"${INTERNAL_PORT}\\"}  > data.json 
