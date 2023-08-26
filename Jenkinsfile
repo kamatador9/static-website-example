@@ -26,7 +26,7 @@ pipeline {
               }
            }
        }
-       stage('Run container based on builded image') {
+       stage('Run container based on builded image') {https://github.com/kamatador9/static-website-example/tree/master
           agent any
           steps {
             script {
@@ -74,10 +74,7 @@ pipeline {
           }
       }
 
-      stage('STAGING - Deploy app') {
-        when {
-           expression { GIT_BRANCH == 'origin/master' }
-       }
+     stage('STAGING - Deploy app') {
       agent any
       steps {
           script {
@@ -90,10 +87,12 @@ pipeline {
      
      }
      stage('PROD - Deploy app') {
-    
+       when {
+           expression { GIT_BRANCH == 'origin/master' }
+       }
      agent any
 
-     steps {
+       steps {
           script {
             sh """
               echo  {\\"your_name\\":\\"${APP_NAME}\\",\\"container_image\\":\\"${CONTAINER_IMAGE}\\", \\"external_port\\":\\"${EXTERNAL_PORT}\\", \\"internal_port\\":\\"${INTERNAL_PORT}\\"}  > data.json 
